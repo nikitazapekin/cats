@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>cats</title>
+</head>
+<body>
+
+  <button class="btnn">Click</button>
+<img src=" " class="image">
+  <style>
+    body{
+      background: linear-gradient(90deg, rgb(63, 172, 250), blue);
+    }
+    .image{
+     left: 50%;
+     transform: translateX(-50%);
+     border: 5px solid green;
+     border-radius: 20px;
+    position: absolute;
+     width: 400px; 
+     height: 300px;
+    }
+    .btnn {
+position: relative;
+left: 50%;
+transform: translateX(-50%);
+top: 350px;
+width: 300px;
+     height: 90px;
+     font-size: 50px;
+     background-color: orangered;
+     color: #fff;
+     letter-spacing: 4px;
+     cursor: pointer;
+    }
+    @media only screen and (max-width:400px){
+      .image{
+        width: 330px;
+        height: 250px;
+      }
+    }
+  </style>
+<script>
+let  btn=document.querySelector('.btnn')
+let  image=document.querySelector('.image')
+async function  fetchAsyncTodos() {
+
+
+
+
+const response = await fetch('https://api.thecatapi.com/v1/images/search?limit=10')
+    const data = await response.json()
+   
+    
+    var a=document.createElement('a');
+    a.href=data[0].url;
+let sr = image.src
+image.src=data[0].url
+}
+btn.addEventListener("click", fetchAsyncTodos)
+fetchAsyncTodos()
+</script>
+</body>
+</html>
